@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>1.509.2</version>
+        <!-- which version of Jenkins is this plugin built against? -->
+    </parent>
+
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>gerrit-review-buddy</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>hpi</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sonyericsson.hudson.plugins.gerrit</groupId>
+            <artifactId>gerrit-trigger</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.gitective</groupId>
+            <artifactId>gitective-core</artifactId>
+            <version>0.9.9</version>
+        </dependency>
+    </dependencies>
+
+    <licenses>
+        <license>
+            <name>
+                Copyright 2013 Switch-Gears ApS
+            </name>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>emanuelez</id>
+            <name>Emanuele Zattin</name>
+            <email>emanuele.zattin@switch-gears.dk</email>
+            <organization>SwitchGears ApS</organization>
+            <url>www.switch-gears.dk</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+                <role>maintainer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
+    <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>http://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <!--
+          explicitly specifying the latest version here because one we get from the parent POM
+          tends to lag behind a bit
+        -->
+        <maven-hpi-plugin.version>1.96</maven-hpi-plugin.version>
+    </properties>
+</project>
