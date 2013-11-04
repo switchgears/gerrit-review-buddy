@@ -20,9 +20,9 @@
             <version>2.10.1</version>
         </dependency>
         <dependency>
-            <groupId>org.gitective</groupId>
-            <artifactId>gitective-core</artifactId>
-            <version>0.9.9</version>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>3.0.0.201306101825-r</version>
         </dependency>
     </dependencies>
 
@@ -55,6 +55,11 @@
         <repository>
             <id>repo.jenkins-ci.org</id>
             <url>http://repo.jenkins-ci.org/public/</url>
+        </repository>
+        <repository>
+            <id>jgit-repository</id>
+            <name>Eclipse JGit Repository</name>
+            <url>http://download.eclipse.org/jgit/maven</url>
         </repository>
     </repositories>
 
