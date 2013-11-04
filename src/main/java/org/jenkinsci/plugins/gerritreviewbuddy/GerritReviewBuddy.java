@@ -25,7 +25,6 @@ import org.eclipse.jgit.patch.FileHeader;
 import org.eclipse.jgit.revwalk.DepthWalk;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
-import org.eclipse.jgit.storage.file.FileRepository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.eclipse.jgit.treewalk.CanonicalTreeParser;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -52,7 +51,7 @@ public class GerritReviewBuddy extends Builder {
         }
 
         // Initialise the Git repo
-        FileRepository fileRepository;
+        Repository fileRepository;
         try {
             fileRepository = new FileRepositoryBuilder()
                     .setGitDir(
@@ -198,6 +197,10 @@ public class GerritReviewBuddy extends Builder {
                 }
 
                 RevWalk walk = new RevWalk(fileRepository);
+                if (commit.getParentCount() == 0) {
+                    walk.release();
+                    break;
+                }
                 RevCommit commitParent = walk.parseCommit(commit.getParent(0));
 
                 ObjectId headTree = commit.getTree();
